@@ -90,15 +90,11 @@ class ESP8266:
 
 	def prepareMessage(self, t, h, p):
 		""" This method is paring a measured values into json format """
-
-		html1 = """<!DOCTYPE html>
-<html>
-    <head> <title>ESP8266 Pins</title> </head>
-    <body>"""
-		html2 = """</body>
-</html>
-"""
-
-		msg = json.dumps({"Temperature" : str(t), "Humidity: " : str(h), "Pressure:" : str(p)})
-		print("Message prepared: " + msg)
-		return html1 + msg + html2
+		if (self.bmp.errorFlag > 0):
+			msg = "Sensor Error"
+			return ("HTTP/1.0 204 Measurement error\r\n\r\n \r\n")
+		else:
+			msg = json.dumps({"temperature" : str(t), "humidity" : str(h), "pressure" : str(p)})
+			print("Message prepared: " + msg)
+			#return html1 + msg + html2
+			return ("HTTP/1.0 200 OK\r\n\r\n" + msg + "\r\n")

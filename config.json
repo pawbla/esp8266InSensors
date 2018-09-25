@@ -1,6 +1,6 @@
 {
-	"ssid" : "Asus_PBL",
-	"password" : "Flat2015m6",
+	"ssid" : "",
+	"password" : "",
 	"dht11Pin" : "0",
 	"bmp180SCL" : "2",
 	"bmp180SDA" : "0"

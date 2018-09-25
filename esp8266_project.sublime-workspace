@@ -32,19 +32,28 @@
 	"buffers":
 	[
 		{
-			"file": "setup.txt",
+			"file": "esp8266.py",
 			"settings":
 			{
-				"buffer_size": 983,
+				"buffer_size": 2971,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "esp8266.py",
+			"file": "bmp180.py",
 			"settings":
 			{
-				"buffer_size": 2928,
+				"buffer_size": 2960,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples.py",
+			"settings":
+			{
+				"buffer_size": 660,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -86,13 +95,15 @@
 	],
 	"file_history":
 	[
-		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/config.py",
+		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/config.json",
 		"/D/Projekty/HomeSystem/EmbeddedApplication/traces/traces.log",
+		"/C/Users/PAWE~1/AppData/Local/Temp/Rar$DR01.383/city.list.json",
+		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/bmp180.py",
+		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/examples.py",
+		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/setup.txt",
+		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/config.py",
 		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/main.py",
 		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/esp8266.py",
-		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/bmp180.py",
-		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/config.json",
-		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/examples.py",
 		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/dht11.py"
 	],
 	"find":
@@ -111,6 +122,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"172797",
+			"\"id\":2172797",
+			"krakow",
+			"pl",
+			"create webse",
+			"handle_request",
+			"create_file_response",
+			"create_response",
+			"create_file_response",
+			"create_response",
+			"CONTENT_TYPE_MAP",
 			"json",
 			"self.UT_nc",
 			"UP"
@@ -131,52 +153,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "setup.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 983,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								841,
-								841
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "esp8266.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2928,
+						"buffer_size": 2971,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1981,
-								1981
+								2696,
+								2696
 							]
 						],
 						"settings":
@@ -185,7 +179,64 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 315.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "bmp180.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2108,
+								2108
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 589.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "examples.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								660,
+								660
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -271,7 +322,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 212.0,
+	"side_bar_width": 192.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
