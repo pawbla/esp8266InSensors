@@ -32,15 +32,6 @@
 	"buffers":
 	[
 		{
-			"file": "setup.txt",
-			"settings":
-			{
-				"buffer_size": 983,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "esp8266.py",
 			"settings":
 			{
@@ -82,10 +73,13 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW"
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors"
 	],
 	"file_history":
 	[
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/bmp180.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/config.json",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/setup.txt",
 		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/config.py",
 		"/D/Projekty/HomeSystem/EmbeddedApplication/traces/traces.log",
 		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/main.py",
@@ -97,7 +91,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -131,39 +125,11 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "setup.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 983,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								841,
-								841
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "esp8266.py",
 					"semi_transient": false,
 					"settings":
@@ -175,8 +141,8 @@
 						"selection":
 						[
 							[
-								1981,
-								1981
+								54,
+								54
 							]
 						],
 						"settings":
@@ -185,7 +151,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 315.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -196,7 +162,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -233,7 +199,7 @@
 	"project": "esp8266_project.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":

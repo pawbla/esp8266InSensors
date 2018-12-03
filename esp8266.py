@@ -16,7 +16,7 @@ class ESP8266:
 
 		self.connectToLAN(conf.getSSID(), conf.getPassword())
 		self.createSocketServer()
-	#self.dht11 = dht.DHT11(machine.Pin(conf.getDH11pin())
+		self.dht11 = dht.DHT11(machine.Pin(int(conf.getDH11pin())))
 		self.bmp = bmp180.BMP180(conf.getBMPscl() , conf.getBMPsda())
 
 	def listenOnSocketServer(self):
@@ -26,7 +26,7 @@ class ESP8266:
 			con, addr = self.s.accept()
 			print('Connection from: ', addr)
 			# here shall be executed all measurements and getting measured values
-			#dht = self.measureTempAndHum()
+			dht = self.measureTempAndHum()
 			bmpM = self.measurePressure()
 			#get request and send message
 			try:
@@ -34,8 +34,7 @@ class ESP8266:
 				print("Received message: " + str(rec))
 			except OSError as e:
 				print("An error has occured: ", e)
-			#msg = self.prepareMessage(dht[0],dht[1],123)
-			msg = self.prepareMessage(bmpM[0],0,bmpM[1])
+			msg = self.prepareMessage(bmpM[0],dht[1],bmpM[1])
 			con.send(msg)
 			con.close()
 		pass		
@@ -52,7 +51,6 @@ class ESP8266:
 			sta_if.active(True)
 			sta_if.connect(ssid, password)
 			while not sta_if.isconnected():
-				print("Connecting in progress")
 				pass
 		print('ESP8266 is connected to the router. IP: ', sta_if.ifconfig())
 		pass

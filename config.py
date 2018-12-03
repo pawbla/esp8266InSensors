@@ -6,8 +6,10 @@ class Config:
 			self.config = json.load(file)
 		file.close()
 
+		print("BMP180 SDA pin: " + self.config['bmp180SDA'])
+		print("BMP180 SCL pin: " + self.config['bmp180SCL'])
+		print("DHT11 data pin: " + self.config['dht11Pin'])
 		print("ssid: " + self.config['ssid'])
-		print("password: " + self.config['password'])	
 
 	def getSSID(self):
 		return self.config['ssid']
