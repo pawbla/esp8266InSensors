@@ -4,9 +4,11 @@ import time
 import math
 
 class BMP180():
-	def __init__(self, sclP, sdaP):
+	def __init__(self, sclP, sdaP, alt):
 		self.addr = 0x77
 		self.mode = 0
+
+		self.altitude = alt
 
 		self.UT_nc = 0
 		self.UP_nc = 0
@@ -64,6 +66,7 @@ class BMP180():
 		return t
 
 	def pressure(self):
+		press = [0,0]
 		B6 = self.B5_raw-4000
 		X1 = (self._B2*(B6**2/2**12))/2**11
 		X2 = self._AC2*B6/2**11
@@ -81,5 +84,8 @@ class BMP180():
 		X1 = (pressure/2**8)**2
 		X1 = (X1*3038)/2**16
 		X2 = (-7357*pressure)/2**16
-		p = pressure+(X1+X2+3791)/2**4
-		return p
+		# atmospheric pressure
+		press[0] = pressure+(X1+X2+3791)/2**4
+		# atmospheric pressure at sea level
+		press[1] = press[0] / (( 1 - (self.altitude / 44330)) ** 5.255)
+		return press
