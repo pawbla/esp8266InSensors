@@ -17,7 +17,7 @@ class ESP8266:
 		self.connectToLAN(conf.getSSID(), conf.getPassword())
 		self.createSocketServer()
 		self.dht11 = dht.DHT11(machine.Pin(int(conf.getDH11pin())))
-		self.bmp = bmp180.BMP180(conf.getBMPscl(), conf.getBMPsda(), 180)
+		self.bmp = bmp180.BMP180(conf.getBMPscl(), conf.getBMPsda(), conf.getAltitude())
 
 	def listenOnSocketServer(self):
 		""" This method is listening on created socket server """
@@ -88,7 +88,7 @@ class ESP8266:
 
 	def prepareMessage(self, t, h, p, pZ):
 		""" This method is paring a measured values into json format """
-
+		header = "HTTP/1.1 200 OK\nContent-Type: application/json\r\n\n"
 		html1 = """<!DOCTYPE html>
 <html>
     <head> <title>ESP8266 Pins</title> </head>
@@ -97,6 +97,6 @@ class ESP8266:
 </html>
 """
 
-		msg = json.dumps({"Temperature" : str(t), "Humidity: " : str(h), "Pressure:" : str(p), "PressureZero:" : str(pZ)})
+		msg = json.dumps({"Temperature" : str(t), "Humidity" : str(h), "Pressure" : str(p), "PressureZero" : str(pZ)})
 		print("Message prepared: " + msg)
-		return html1 + msg + html2
+		return header + msg

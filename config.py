@@ -25,3 +25,6 @@ class Config:
 
 	def getBMPsda(self):
 		return self.config['bmp180SDA']
+
+	def getAltitude(self):
+		return self.config['altitude']
