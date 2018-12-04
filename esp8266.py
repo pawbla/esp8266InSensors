@@ -29,7 +29,7 @@ class ESP8266:
 			con, addr = self.s.accept()
 			print('Connection from: ', addr)
 			# here shall be executed all measurements and getting measured values
-			#dht = self.measureTempAndHum()
+			dht = self.measureTempAndHum()
 			bmpM = self.measurePressure()
 			#get request and send message
 			try:
@@ -38,7 +38,7 @@ class ESP8266:
 			except OSError as e:
 				print("An error has occured: ", e)
 			if self.authentication.authenticate(rec):
-				msg = self.prepareMessage(bmpM[0],bmpM[1],bmpM[1][0],bmpM[1][1])
+				msg = self.prepareMessage(dht[0], dht[1], bmpM[1][0], bmpM[1][1])
 			else:
 				msg = self.authentication.message()
 			con.send(msg)
