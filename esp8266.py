@@ -8,6 +8,7 @@ import bmp180
 import time
 import config
 import authentication as Auth
+import uos
 
 class ESP8266:
 	def __init__(self):
@@ -19,7 +20,7 @@ class ESP8266:
 		self.createSocketServer()
 		self.dht11 = dht.DHT11(machine.Pin(int(conf.getDH11pin())))
 		self.bmp = bmp180.BMP180(conf.getBMPscl(), conf.getBMPsda(), conf.getAltitude())
-		self.authentication = Auth.Authentication()
+		self.authentication = Auth.Authentication(conf.getAccPassword())
 
 	def listenOnSocketServer(self):
 		""" This method is listening on created socket server """
@@ -34,11 +35,12 @@ class ESP8266:
 			try:
 				rec = con.recv(500)
 				print("Received message: " + str(rec))
-				print(self.authentication.authenticate(rec))
 			except OSError as e:
 				print("An error has occured: ", e)
-
-			msg = self.prepareMessage(bmpM[0],bmpM[1],bmpM[1][0],bmpM[1][1])
+			if self.authentication.authenticate(rec):
+				msg = self.prepareMessage(bmpM[0],bmpM[1],bmpM[1][0],bmpM[1][1])
+			else:
+				msg = self.authentication.message()
 			con.send(msg)
 			con.close()
 		pass		

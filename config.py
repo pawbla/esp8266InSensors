@@ -28,3 +28,6 @@ class Config:
 
 	def getAltitude(self):
 		return self.config['altitude']
+
+	def getAccPassword(self):
+		return self.config['accPassword']
