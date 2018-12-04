@@ -6,7 +6,7 @@ import math
 class BMP180():
 	def __init__(self, sclP, sdaP, alt):
 		self.addr = 0x77
-		self.mode = 0
+		self.mode = 1
 
 		self.altitude = alt
 
@@ -14,7 +14,7 @@ class BMP180():
 		self.UP_nc = 0
 
 		self.i2c = I2C(scl=Pin(int(sclP)),sda=Pin(int(sdaP)),freq=100000)
-
+		self.i2c.start()
 
 		self.readCalibration()
 
@@ -47,7 +47,7 @@ class BMP180():
 		self.i2c.writeto_mem(self.addr, 0xF4, bytearray([0x34+(self.mode << 6)]))
 		t_pressure_ready = delays[self.mode]
 		t_start = time.ticks_ms()
-		time.sleep_ms(5)
+		time.sleep_ms(t_pressure_ready)
 		MSB_raw = self.i2c.readfrom_mem(self.addr, 0xF6, 1)
 		LSB_raw = self.i2c.readfrom_mem(self.addr, 0xF7, 1)
 		XLSB_raw = self.i2c.readfrom_mem(self.addr, 0xF8, 1)
