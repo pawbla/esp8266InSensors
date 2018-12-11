@@ -38,7 +38,9 @@ class ESP8266:
 			except OSError as e:
 				print("An error has occured: ", e)
 			if self.authentication.authenticate(rec):
-				msg = self.prepareMessage(dht[0], dht[1], bmpM[1][0], bmpM[1][1])
+				p = int(bmpM[1][0] / 100)
+				p0 = int(bmpM[1][1] / 100)
+				msg = self.prepareMessage(dht[0], dht[1], p , p0)
 			else:
 				msg = self.authentication.message()
 			con.send(msg)
