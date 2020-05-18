@@ -2,8 +2,5 @@
 	"ssid" : "",
 	"password" : "",
 	"dht11Pin" : "1",
-	"bmp180SCL" : "2",
-	"bmp180SDA" : "0",
-	"altitude" : 180,
 	"accPassword" : ""
 }

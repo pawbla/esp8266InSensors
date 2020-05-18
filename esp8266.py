@@ -4,7 +4,6 @@ import dht
 import machine
 import json
 import ure
-import bmp180
 import time
 import config
 import authentication as Auth
@@ -19,7 +18,6 @@ class ESP8266:
 		self.connectToLAN(conf.getSSID(), conf.getPassword())
 		self.createSocketServer()
 		self.dht11 = dht.DHT11(machine.Pin(int(conf.getDH11pin())))
-		self.bmp = bmp180.BMP180(conf.getBMPscl(), conf.getBMPsda(), conf.getAltitude())
 		self.authentication = Auth.Authentication(conf.getAccPassword())
 
 	def listenOnSocketServer(self):
@@ -30,7 +28,6 @@ class ESP8266:
 			print('Connection from: ', addr)
 			# here shall be executed all measurements and getting measured values
 			dht = self.measureTempAndHum()
-			bmpM = self.measurePressure()
 			#get request and send message
 			try:
 				rec = con.recv(500)
@@ -38,9 +35,7 @@ class ESP8266:
 			except OSError as e:
 				print("An error has occured: ", e)
 			if self.authentication.authenticate(rec):
-				p = int(bmpM[1][0] / 100)
-				p0 = int(bmpM[1][1] / 100)
-				msg = self.prepareMessage(dht[0], dht[1], p , p0)
+				msg = self.prepareMessage(dht[0], dht[1])
 			else:
 				msg = self.authentication.message()
 			con.send(msg)
@@ -85,16 +80,7 @@ class ESP8266:
 		print("temperature: " + str(dht[0]) + " humidity: " + str(dht[1]))
 		return dht
 
-	def measurePressure(self):
-		bmp=[0,0]
-		self.bmp.measure()
-		bmp[0]=self.bmp.temperature()
-		bmp[1]=self.bmp.pressure()
-		print("temperature: " + str(bmp[0]) + " pressure: " + str(bmp[1]))
-		return bmp
-
-
-	def prepareMessage(self, t, h, p, pZ):
+	def prepareMessage(self, t, h):
 		""" This method is paring a measured values into json format """
 		header = "HTTP/1.1 200 OK\nContent-Type: application/json\r\n\n"
 		html1 = """<!DOCTYPE html>
@@ -105,6 +91,6 @@ class ESP8266:
 </html>
 """
 
-		msg = json.dumps({"Temperature" : str(t), "Humidity" : str(h), "Pressure" : str(p), "PressureZero" : str(pZ)})
+		msg = json.dumps({"Temperature" : str(t), "Humidity" : str(h)})
 		print("Message prepared: " + msg)
 		return header + msg

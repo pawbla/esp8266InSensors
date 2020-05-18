@@ -4,10 +4,6 @@
 		"selected_items":
 		[
 			[
-				"tr",
-				"tr\tTag"
-			],
-			[
 				"a",
 				"authentication"
 			],
@@ -43,44 +39,10 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "esp8266.py",
-			"settings":
-			{
-				"buffer_size": 3222,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "bmp180.py",
-			"settings":
-			{
-				"buffer_size": 2879,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
-	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system": "",
 	"build_system_choices":
 	[
-		[
-			[
-				[
-					"Packages/Python/Python.sublime-build",
-					""
-				],
-				[
-					"Packages/Python/Python.sublime-build",
-					"Syntax Check"
-				]
-			],
-			[
-				"Packages/Python/Python.sublime-build",
-				"Syntax Check"
-			]
-		]
 	],
 	"build_varint": "",
 	"command_palette":
@@ -108,22 +70,11 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors"
-	],
 	"file_history":
 	[
-		"/E/Projects/HomeSystem/01_Documentation/mysql.txt",
 		"/E/Projects/HomeSystem/06_ConfigFiles/RaspberryPi/application.properties",
-		"/E/Projects/HomeSystem/98_LogsForAnalyzing/log.log",
-		"/C/Tomcat/apache-tomcat-9.0.12/conf/server.xml",
 		"/E/Projects/HomeSystem/06_ConfigFiles/RaspberryPi/log4j2.xml",
-		"/E/Projects/HomeSystem/05_Examples/newPageExample/trae.html",
-		"/E/Projects/HomeSystem/02_0_SW_Raspberry/logs/log.log",
-		"/E/Projects/HomeSystem/02_0_SW_Raspberry/logs/warnTrace.log",
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/bmp180.py",
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266.py",
+		"/E/Projects/HomeSystem/98_LogsForAnalyzing/log.log",
 		"/C/Users/blach/Desktop/MANIFEST.MF",
 		"/C/Users/blach/Desktop/log4j.properties",
 		"/C/Users/blach/Desktop/phone/log4j.properties",
@@ -131,6 +82,7 @@
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/config.py",
 		"/E/Projects/HomeSystem/06_ConfigFiles/ESP8266/config.json",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/config.json",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/bmp180.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/examples.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/main.py",
 		"/E/Projects/HomeSystem/01_Documentation/setup.txt",
@@ -153,7 +105,6 @@
 		"height": 104.0,
 		"where_history":
 		[
-			""
 		]
 	},
 	"find_state":
@@ -161,20 +112,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"Starting EmbeddedApp",
-			"\\[[A-Za-z]*Sensor|\\[Rest",
-			"[GET]}: There is already 'homeController' bean method",
-			"decode",
-			"header",
-			"self.UT_nc",
-			"json",
-			"self.UT_nc",
-			"UP"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
 		],
@@ -187,67 +129,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "esp8266.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3222,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1185,
-								1185
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 486.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "bmp180.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2879,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2719,
-								2719
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1010.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -282,16 +165,12 @@
 		]
 	},
 	"menu_visible": true,
-	"output.exec":
-	{
-		"height": 126.0
-	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
 	"pinned_build_system": "Packages/Python/Python.sublime-build",
-	"project": "esp8266_project.sublime-project",
+	"project": "esp8266.sublime-project",
 	"replace":
 	{
 		"height": 50.0
@@ -332,7 +211,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 153.0,
+	"side_bar_width": 298.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
