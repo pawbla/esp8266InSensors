@@ -1,96 +1,23 @@
-import network
-import socket
-import dht
-import machine
-import json
-import ure
-import time
+import uasyncio
 import config
-import authentication as Auth
-import uos
+import lanConnection as LAN
+import dhtMeasure as DHT
+import restAPI as api
 
 class ESP8266:
 	def __init__(self):
-
 		#get configuration datas
 		conf = config.Config()
+		self.lan = LAN.LAN_Connection(conf.getSSID(), conf.getPassword())
+		self.lan.connectToLAN()
+		self.dht_m = DHT.DHT_Measure(conf)
+		self.api = api.Rest_API(conf, self.dht_m)
+		self.iter = 0
 
-		self.connectToLAN(conf.getSSID(), conf.getPassword())
-		self.createSocketServer()
-		self.dht11 = dht.DHT11(machine.Pin(int(conf.getDH11pin())))
-		self.authentication = Auth.Authentication(conf.getAccPassword())
-
-	def listenOnSocketServer(self):
-		""" This method is listening on created socket server """
-		# in this method shall be executed every sensors' measurements
-		while True:
-			con, addr = self.s.accept()
-			print('Connection from: ', addr)
-			# here shall be executed all measurements and getting measured values
-			dht = self.measureTempAndHum()
-			#get request and send message
-			try:
-				rec = con.recv(500)
-				print("Received message: " + str(rec))
-			except OSError as e:
-				print("An error has occured: ", e)
-			if self.authentication.authenticate(rec):
-				msg = self.prepareMessage(dht[0], dht[1])
-			else:
-				msg = self.authentication.message()
-			con.send(msg)
-			con.close()
-		pass		
-
-	def connectToLAN(self, ssid, password):
-		""" This method allows to connect an ESP8266 to the router """
-		print("Connect to LAN")
-		#stationary mode for connecting ESP8266 module to the router
-		sta_if = network.WLAN(network.STA_IF)
-		print("Check connection....")
-		if not sta_if.isconnected():
-			#connect to the router when no connected after startup
-			print("Connecting to network...")
-			sta_if.active(True)
-			sta_if.connect(ssid, password)
-			while not sta_if.isconnected():
-				pass
-		print('ESP8266 is connected to the router. IP: ', sta_if.ifconfig())
+	def initialize(self):
+		print("Initialize threads")
+		loop = uasyncio.get_event_loop()
+		loop.create_task(self.dht_m.measureTempAndHum())
+		loop.call_soon(uasyncio.start_server(self.api.process, "0.0.0.0", 80))
+		loop.run_forever()
 		pass
-
-	def createSocketServer(self):
-		""" This metod allows to create a server which will be listen a connection on created socket """
-		port = 80
-		addr = socket.getaddrinfo('0.0.0.0', port)[0][-1]
-		try:
-			self.s = socket.socket()
-			self.s.bind(addr)
-			self.s.listen(1)
-		except OSError as e:
-			print("Error: " + str(e))
-			if ure.match('.*EADDRINUSE.*',str(e)):
-				print("Adrr")
-				machine.reset()
-
-	def measureTempAndHum(self):
-		dht=[0,0]
-		self.dht11.measure()
-		dht[0] = self.dht11.temperature()
-		dht[1] = self.dht11.humidity()
-		print("temperature: " + str(dht[0]) + " humidity: " + str(dht[1]))
-		return dht
-
-	def prepareMessage(self, t, h):
-		""" This method is paring a measured values into json format """
-		header = "HTTP/1.1 200 OK\nContent-Type: application/json\r\n\n"
-		html1 = """<!DOCTYPE html>
-<html>
-    <head> <title>ESP8266 Pins</title> </head>
-    <body>"""
-		html2 = """</body>
-</html>
-"""
-
-		msg = json.dumps({"Temperature" : str(t), "Humidity" : str(h)})
-		print("Message prepared: " + msg)
-		return header + msg
