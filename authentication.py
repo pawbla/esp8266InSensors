@@ -6,9 +6,6 @@ class Authentication():
 		self.password = password
 
 	def authenticate(self, msg):
-		return True
-
-
 		u = ure.search(b'Authorization:\\s([A-Za-z0-9\\.]*)\r', msg)
 		if u is None:
 			return False

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"sys",
+				"sysVersion"
+			],
+			[
 				"ca",
 				"calcMovingAvg"
 			],
@@ -55,34 +59,8 @@
 			"file": "esp8266.py",
 			"settings":
 			{
-				"buffer_size": 3726,
+				"buffer_size": 688,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "main.py",
-			"settings":
-			{
-				"buffer_size": 57,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "authentication.py",
-			"settings":
-			{
-				"buffer_size": 516,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "def listenOnSocketServer(self):\n\t\t\"\"\" This method is listening on created socket server \"\"\"\n\t\t# in this method shall be executed every sensors' measurements\n\t\tloop = 0\n\t\twhile True:\n\t\t\tprint(\"===== loop ====== \" + str(loop))\n\t\t\tcon, addr = self.s.accept()\n\t\t\tprint('Connection from: ', addr)\n\t\t\t# here shall be executed all measurements and getting measured values\n\t\t\t#dht = self.measureTempAndHum()\n\t\t\t#get request and send message\n\t\t\ttry:\n\t\t\t\trec = con.recv(500)\n\t\t\t\tprint(\"Received message: \" + str(rec))\n\t\t\texcept OSError as e:\n\t\t\t\tprint(\"An error has occured: \", e)\n\t\t\tif self.authentication.authenticate(rec):\n\t\t\t\t#msg = self.prepareMessage(dht[0], dht[1])\n\t\t\t\tmsg = self.prepareMessage(1, 2)\n\t\t\telse:\n\t\t\t\tmsg = self.authentication.message()\n\t\t\tcon.send(msg)\n\t\t\tcon.close()\n\t\t\tloop = loop + 1\n\t\tpass\t\t\n\n\n\t\tdef createSocketServer(self):\n\t\t\"\"\" This metod allows to create a server which will be listen a connection on created socket \"\"\"\n\t\tprint(\"Create socket server\")\n\t\tport = 80\n\t\taddr = socket.getaddrinfo('0.0.0.0', port)[0][-1]\n\t\ttry:\n\t\t\tself.s = socket.socket()\n\t\t\tself.s.bind(addr)\n\t\t\tself.s.listen(1)\n\t\texcept OSError as e:\n\t\t\tprint(\"Error: \" + str(e))\n\t\t\tif ure.match('.*EADDRINUSE.*',str(e)):\n\t\t\t\tprint(\"Adrr\")\n\t\t\t\tmachine.reset()",
-			"settings":
-			{
-				"buffer_size": 1244,
 				"line_ending": "Windows"
 			}
 		}
@@ -139,9 +117,16 @@
 	],
 	"file_history":
 	[
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/main.py",
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266_project.sublime-project",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/authentication.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/restApi.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/sysInfo.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/dhtMeasure.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/main.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/lanConnection.py",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/examples.py",
+		"/E/Projects/HomeSystem/01_Documentation/setup.txt",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266_project.sublime-project",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/config.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/config.json",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/bmp180.py",
@@ -153,13 +138,10 @@
 		"/E/Projects/HomeSystem/05_Examples/newPageExample/trae.html",
 		"/E/Projects/HomeSystem/02_0_SW_Raspberry/logs/log.log",
 		"/E/Projects/HomeSystem/02_0_SW_Raspberry/logs/warnTrace.log",
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266.py",
 		"/C/Users/blach/Desktop/MANIFEST.MF",
 		"/C/Users/blach/Desktop/log4j.properties",
 		"/C/Users/blach/Desktop/phone/log4j.properties",
 		"/E/Projects/HomeSystem/06_ConfigFiles/ESP8266/config.json",
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/examples.py",
-		"/E/Projects/HomeSystem/01_Documentation/setup.txt",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/setup.txt",
 		"/D/Projekty/HomeSystem/WiFiModule_ESP8266_SW/config.py",
 		"/D/Projekty/HomeSystem/EmbeddedApplication/traces/traces.log",
@@ -187,6 +169,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"self.aa",
+			"aaa",
+			"Auth",
+			"config",
+			"time",
+			"ure",
+			"uer",
+			"ure",
+			"json",
+			"machine",
+			"socket",
+			"uasyncio",
+			"network",
+			"dht",
+			"uos",
 			"listenOnSocketServer",
 			"pressu",
 			"bmp",
@@ -226,15 +223,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3726,
+						"buffer_size": 688,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1019,
-								1019
+								380,
+								431
 							]
 						],
 						"settings":
@@ -243,95 +240,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 437.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "main.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 57,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								55,
-								55
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "authentication.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 516,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								155,
-								155
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1244,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								1244
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]

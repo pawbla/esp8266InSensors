@@ -3,6 +3,7 @@ import config
 import lanConnection as LAN
 import dhtMeasure as DHT
 import restAPI as api
+import sysInfo as sys_i
 
 class ESP8266:
 	def __init__(self):
@@ -11,7 +12,8 @@ class ESP8266:
 		self.lan = LAN.LAN_Connection(conf.getSSID(), conf.getPassword())
 		self.lan.connectToLAN()
 		self.dht_m = DHT.DHT_Measure(conf)
-		self.api = api.Rest_API(conf, self.dht_m)
+		self.sys = sys_i.SysInfo()
+		self.api = api.Rest_API(conf, self.dht_m, self.sys)
 		self.iter = 0
 
 	def initialize(self):

@@ -3,12 +3,11 @@ import authentication as Auth
 
 class Rest_API():
 
-	def __init__(self, conf, dht):
+	def __init__(self, conf, dht, sysInfo):
 		self.dht = dht
+		self.sysInfo = sysInfo
 		self.api_ver = "1"
-		self.aa = "aaa"
 		self.authentication = Auth.Authentication(conf.getAccPassword()) 
-		# DOROBIĆ AUTHENTYKACJĘ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	def process(self, reader, writer):
 		print("Process received datas")
@@ -19,6 +18,8 @@ class Rest_API():
 	def prepareApiResponse(self, read):
 		print("Prepare response")
 		path = ""
+		if not self.authentication.authenticate(read):
+			return self.authentication.message()
 		parsed = ure.search(b'GET\\s/api/v' + self.api_ver + '/([A-Za-z0-9\\.]*)\\sHTTP', read)
 		if parsed is None:
 			return self.returnBadRequest()
@@ -30,9 +31,11 @@ class Rest_API():
 			return ""
 
 	def switchToApi(self, path):
-		print("Api " + self.dht.getApiPath())
+		print("Switch to API")
 		if path == self.dht.getApiPath():
 			resp = self.dht.getMessage();
+		elif self.sysInfo.getApiPath():
+			resp = self.sysInfo.getMessage();
 		else:
 			resp = self.returnNotFound()
 		return resp
