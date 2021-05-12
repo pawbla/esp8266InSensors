@@ -15,19 +15,22 @@ class DHT_Measure():
 			self.error = "Unable to initialize DHT sensor: "  + (str(e))
 		self.iter = 0
 		self.errors = ""
+		self.m_p = 0
 
 	def measureTempAndHum(self):
 		print("Measure temperature and humidity")
-		if self.dht11:
-			print("DHT 11 object exist start measurements")
-			try:
-				self.dht11.measure()
-				self.addElementToArray(self.tempArr, self.dht11.temperature())
-				self.addElementToArray(self.humArr, self.dht11.humidity())
-				self.errors = ""
-			except Exception as e:
-				self.error = "Unable to measure DHT datas: " + (str(e))
-		await uasyncio.sleep(10)
+		while True:
+			if self.dht11:
+				print("DHT 11 object exist start measurements")
+				try:
+					self.dht11.measure()
+					self.addElementToArray(self.tempArr, self.dht11.temperature())
+					self.addElementToArray(self.humArr, self.dht11.humidity())
+					self.m_p = self.m_p + 1
+					self.errors = ""
+				except Exception as e:
+					self.error = "Unable to measure DHT datas: " + (str(e))
+			await uasyncio.sleep(10)
 
 	def getApiPath(self):
 		return self.apiPath
@@ -55,7 +58,7 @@ class DHT_Measure():
 
 	def addElementToArray(self, arr, value):
 		arr.append(value)
-		arr = arr[-self.arrLength:]
+		arr.remove(arr[0])
 
 	def calcMovingAvg(self, val):
 		""" Calculate moving avarage for entered values """

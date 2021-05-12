@@ -63,6 +63,15 @@
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "restApi.py",
+			"settings":
+			{
+				"buffer_size": 1374,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
@@ -117,21 +126,23 @@
 	],
 	"file_history":
 	[
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/dhtMeasure.py",
+		"/E/var/log/embAppLogs/log.log",
+		"/E/Projects/HomeSystem/02_0_SW_Raspberry/target/Release/application.properties",
+		"/E/Projects/HomeSystem/06_ConfigFiles/RaspberryPi/application.properties",
+		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266_project.sublime-project",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/authentication.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/restApi.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/sysInfo.py",
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/dhtMeasure.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/main.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/lanConnection.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/examples.py",
 		"/E/Projects/HomeSystem/01_Documentation/setup.txt",
-		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/esp8266_project.sublime-project",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/config.py",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/config.json",
 		"/E/Projects/HomeSystem/02_2_SW_ESP8266/esp8266InSensors/bmp180.py",
 		"/E/Projects/HomeSystem/01_Documentation/mysql.txt",
-		"/E/Projects/HomeSystem/06_ConfigFiles/RaspberryPi/application.properties",
 		"/E/Projects/HomeSystem/98_LogsForAnalyzing/log.log",
 		"/C/Tomcat/apache-tomcat-9.0.12/conf/server.xml",
 		"/E/Projects/HomeSystem/06_ConfigFiles/RaspberryPi/log4j2.xml",
@@ -214,7 +225,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -230,8 +241,37 @@
 						"selection":
 						[
 							[
-								380,
-								431
+								377,
+								377
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "restApi.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1374,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								515,
+								515
 							]
 						],
 						"settings":

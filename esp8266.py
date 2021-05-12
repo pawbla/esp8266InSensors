@@ -8,6 +8,7 @@ import sysInfo as sys_i
 class ESP8266:
 	def __init__(self):
 		#get configuration datas
+		print("Initialization")
 		conf = config.Config()
 		self.lan = LAN.LAN_Connection(conf.getSSID(), conf.getPassword())
 		self.lan.connectToLAN()
